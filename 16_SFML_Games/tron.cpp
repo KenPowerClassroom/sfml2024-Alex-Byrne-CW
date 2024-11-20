@@ -15,12 +15,12 @@ struct player
   Color color;
   player(Color c)
   {
-    x=rand() % Width;
-    y=rand() % Hight;
+    x=rand() % Width; // the x locations is a random number between 0 and the width
+    y=rand() % Hight; // the y locations is a random number between 0 and the hight
     color=c;
     direction=rand() % 4;
   }
-  void tick()
+  void tick() // sets and changes the x and y positions based on the direction
   {
     if (direction==0) y+=1;
     if (direction==1) x-=1;
@@ -86,9 +86,9 @@ int tron()
             field[p1.x][p1.y]=1; 
             field[p2.x][p2.y]=1;
     
-            CircleShape c(3);
-            c.setPosition(p1.x,p1.y); c.setFillColor(p1.color);    render.draw(c);
-            c.setPosition(p2.x,p2.y); c.setFillColor(p2.color);    render.draw(c);
+            CircleShape circle(3); // changed c to circle
+            circle.setPosition(p1.x,p1.y); circle.setFillColor(p1.color);    render.draw(circle);
+            circle.setPosition(p2.x,p2.y); circle.setFillColor(p2.color);    render.draw(circle);
             render.display(); 
         }
 
