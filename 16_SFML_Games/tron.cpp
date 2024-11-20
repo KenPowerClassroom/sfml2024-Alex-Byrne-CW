@@ -49,11 +49,11 @@ int tron()
     player p1(Color::Red), p2(Color::Green); 
 
     Sprite sprite;
-    RenderTexture t;
-    t.create(Width, Hight);
-    t.setSmooth(true);
-    sprite.setTexture(t.getTexture());
-    t.clear();  t.draw(sBackground);
+    RenderTexture render; //changed veriable name from t to render
+    render.create(Width, Hight);
+    render.setSmooth(true);
+    sprite.setTexture(render.getTexture());
+    render.clear();  render.draw(sBackground);
 
     bool Game=1;
 
@@ -87,9 +87,9 @@ int tron()
             field[p2.x][p2.y]=1;
     
             CircleShape c(3);
-            c.setPosition(p1.x,p1.y); c.setFillColor(p1.color);    t.draw(c);
-            c.setPosition(p2.x,p2.y); c.setFillColor(p2.color);    t.draw(c);
-            t.display();    
+            c.setPosition(p1.x,p1.y); c.setFillColor(p1.color);    render.draw(c);
+            c.setPosition(p2.x,p2.y); c.setFillColor(p2.color);    render.draw(c);
+            render.display(); 
         }
 
        ////// draw  ///////
