@@ -5,18 +5,18 @@
 #include <time.h>
 using namespace sf;
 
-const int W=600;
-const int H=480;
+const int Width=600; // changed veriable name W to width
+const int Hight=480; // changed veriable name H to Hight
 int speed = 4;
-bool field[W][H]={0};
+bool field[Width][Hight]={0};
 
 struct player
 { int x,y,direction; //changed veriable name from dir to direction
   Color color;
   player(Color c)
   {
-    x=rand() % W;
-    y=rand() % H;
+    x=rand() % Width;
+    y=rand() % Hight;
     color=c;
     direction=rand() % 4;
   }
@@ -27,8 +27,8 @@ struct player
     if (direction==2) x+=1;
     if (direction==3) y-=1;
 
-    if (x>=W) x=0;  if (x<0) x=W-1;
-    if (y>=H) y=0;  if (y<0) y=H-1;
+    if (x>= Width) x=0;  if (x<0) x= Width -1;
+    if (y>= Hight) y=0;  if (y<0) y= Hight -1;
   }
 
   Vector3f getColor()
@@ -39,7 +39,7 @@ int tron()
 {
     srand(time(0));
 
-    RenderWindow window(VideoMode(W, H), "The Tron Game!");
+    RenderWindow window(VideoMode(Width, Hight), "The Tron Game!");
     window.setFramerateLimit(60);
 
     Texture texture;
@@ -50,7 +50,7 @@ int tron()
 
     Sprite sprite;
     RenderTexture t;
-    t.create(W, H);
+    t.create(Width, Hight);
     t.setSmooth(true);
     sprite.setTexture(t.getTexture());
     t.clear();  t.draw(sBackground);
