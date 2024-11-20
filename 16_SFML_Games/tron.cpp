@@ -1,3 +1,6 @@
+// Alex Byrne refactoring 
+//C00297124
+
 #include <SFML/Graphics.hpp>
 #include <time.h>
 using namespace sf;
@@ -8,21 +11,21 @@ int speed = 4;
 bool field[W][H]={0};
 
 struct player
-{ int x,y,dir;
+{ int x,y,direction; //changed veriable name from dir to direction
   Color color;
   player(Color c)
   {
     x=rand() % W;
     y=rand() % H;
     color=c;
-    dir=rand() % 4;
+    direction=rand() % 4;
   }
   void tick()
   {
-    if (dir==0) y+=1;
-    if (dir==1) x-=1;
-    if (dir==2) x+=1;
-    if (dir==3) y-=1;
+    if (direction==0) y+=1;
+    if (direction==1) x-=1;
+    if (direction==2) x+=1;
+    if (direction==3) y-=1;
 
     if (x>=W) x=0;  if (x<0) x=W-1;
     if (y>=H) y=0;  if (y<0) y=H-1;
@@ -63,15 +66,15 @@ int tron()
                 window.close();
         }
 
-        if (Keyboard::isKeyPressed(Keyboard::Left)) if (p1.dir!=2) p1.dir=1;
-        if (Keyboard::isKeyPressed(Keyboard::Right)) if (p1.dir!=1)  p1.dir=2;
-        if (Keyboard::isKeyPressed(Keyboard::Up)) if (p1.dir!=0) p1.dir=3;
-        if (Keyboard::isKeyPressed(Keyboard::Down)) if (p1.dir!=3) p1.dir=0;
+        if (Keyboard::isKeyPressed(Keyboard::Left)) if (p1.direction!=2) p1.direction=1;
+        if (Keyboard::isKeyPressed(Keyboard::Right)) if (p1.direction!=1)  p1.direction=2;
+        if (Keyboard::isKeyPressed(Keyboard::Up)) if (p1.direction!=0) p1.direction=3;
+        if (Keyboard::isKeyPressed(Keyboard::Down)) if (p1.direction!=3) p1.direction=0;
 
-        if (Keyboard::isKeyPressed(Keyboard::A)) if (p2.dir!=2) p2.dir=1;
-        if (Keyboard::isKeyPressed(Keyboard::D)) if (p2.dir!=1)  p2.dir=2;
-        if (Keyboard::isKeyPressed(Keyboard::W)) if (p2.dir!=0) p2.dir=3;
-        if (Keyboard::isKeyPressed(Keyboard::S)) if (p2.dir!=3) p2.dir=0;
+        if (Keyboard::isKeyPressed(Keyboard::A)) if (p2.direction!=2) p2.direction=1;
+        if (Keyboard::isKeyPressed(Keyboard::D)) if (p2.direction!=1)  p2.direction=2;
+        if (Keyboard::isKeyPressed(Keyboard::W)) if (p2.direction!=0) p2.direction=3;
+        if (Keyboard::isKeyPressed(Keyboard::S)) if (p2.direction!=3) p2.direction=0;
 
         if (!Game)    continue;
 
